@@ -1,16 +1,16 @@
-# mqtt_bridge
+## Environment
 
-mqtt_bridge provides a functionality to bridge between ROS and MQTT in bidirectional.
+- Ubuntu 18.04
+- Python 2.7.15
+- ROS: melodic
 
+## Quick start
 
-## Principle
+### Installation
 
-`mqtt_bridge` uses ROS message as its protocol. Messages from ROS are serialized by json (or messagepack) for MQTT, and messages from MQTT are deserialized for ROS topic. So MQTT messages should be ROS message compatible. (We use `rosbridge_library.internal.message_conversion` for message conversion.)
-
-This limitation can be overcome by defining custom bridge class, though.
-
-
-## Demo
+  ```bash
+  $ sudo apt install ros-melodic-rosbridge-server
+  ```
 
 ### prepare MQTT broker and client
 

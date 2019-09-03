@@ -73,7 +73,13 @@ class RosToMqttBridge(Bridge):
             self._last_published = now
 
     def _publish(self, msg):
-        payload = bytearray(self._serialize(extract_values(msg)))
+        # print('msg:', msg)
+        # print(extract_values(msg))
+        # https://blog.csdn.net/qq_37541593/article/details/81910876
+        payload = self._serialize(extract_values(msg))
+        # payload = bytearray(self._serialize(extract_values(msg)))
+        # print(new_payload)
+        # print(payload)
         self._mqtt_client.publish(topic=self._topic_to, payload=payload)
 
 
@@ -125,7 +131,13 @@ class MqttToRosBridge(Bridge):
         :param mqtt.Message mqtt_msg: MQTT Message
         :return rospy.Message: ROS Message
         """
+        # https://blog.csdn.net/qq_37541593/article/details/81910876
+        # print(mqtt_msg.payload, type(mqtt_msg.payload))
+        # print(mqtt_msg.payload)
+        # new_msg_dict = self._deserialize(self._serialize({'data':mqtt_msg.payload}))
         msg_dict = self._deserialize(mqtt_msg.payload)
+        # print(new_msg_dict)
+        # print(msg_dict)
         return populate_instance(msg_dict, self._msg_type())
 
 
