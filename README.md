@@ -30,6 +30,11 @@ $ pip install -r requirements.txt
 $ roslaunch mqtt_bridge demo.launch
 ```
 
+```bash
+# with tls options
+$ roslaunch mqtt_bridge demo.launch use_tls:=True
+```
+
 Publish to `/ping`,
 
 ```
